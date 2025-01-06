@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styling */
+.header {
+    background-color: #0066cc;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+/* Main Container Styling */
+.main-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    align-items: center;
+    gap: 20px;
+}
+
+/* Left Section Styling */
+.left-section {
+    flex: 1;
+    text-align: center;
+}
+
+.left-section img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 100px;
+    margin-right: 300px;
+}
+
+.left-section h1 {
+    font-size: 23px;
+    color: #333;
+    margin-top: 20px;
+    margin-right: 375px;
+    font-style: normal;
+    font-weight: lighter;
+}
+
+.left-section h2 {
+    color: #060606;
+    margin-bottom: 20px;
+    font-size: 33px;
+}
+
+/* Right Section Styling */
+.right-section {
+    flex: 1;
+    max-width: 500px; /* Set a max width for better responsiveness */
+    width: 100%;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.436);
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.right-section h2 {
+    color: #0066cc;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Login Button Styling */
+.login-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #00a0e4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #0088cc;
+}
+
+/* Form Links Styling */
+.form-links {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.form-links a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.form-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .right-section {
+        max-width: 90%;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+footer a {
+    color: #007bc1;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
