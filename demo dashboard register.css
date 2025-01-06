@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Resource Management System</title>
+    <link rel="stylesheet" href="demo dashboard register.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Human Resource Management System</h1>
+    </header>
+
+    <div class="main-container">
+        <div class="left-section">
+            <img src="https://img.freepik.com/premium-vector/vector-flat-people-business-teamwork-illustration-flat-illustration_787500-10488.jpg" width="700px" height="500px" alt="Welcome Image">
+            <h1>Welcome to</h1>
+            <h2>Attendance Management System</h2>
+        </div>
+
+        <div class="right-section">
+            <div id="loginSection">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginId">Login ID</label>
+                        <input type="text" id="loginId" placeholder="Enter Login ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter Password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+
+                <div class="form-links">
+                    <p><a href="#" onclick="showRegister()">Register</a> | <a href="#" onclick="showForgotPassword()">Forgot Password?</a></p>
+                </div>
+            </div>
+
+            <div id="registerSection" style="display:none;">
+                <h2>Register</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" placeholder="Enter Password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Register</button>
+                </form>
+
+                <div class="form-links">
+                    <p><a href="#" onclick="showLogin()">Back to Login</a></p>
+                </div>
+            </div>
+
+            <div id="forgotPasswordSection" style="display:none;">
+                <h2>Forgot Password</h2>
+                <form id="forgotPasswordForm">
+                    <div class="form-group">
+                        <label for="forgotUsername">Username</label>
+                        <input type="text" id="forgotUsername" placeholder="Enter Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="forgotPassword">New Password</label>
+                        <input type="password" id="forgotPassword" placeholder="Enter New Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm New Password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Reset Password</button>
+                </form>
+
+                <div class="form-links">
+                    <p><a href="#" onclick="showLogin()">Back to Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Login function
+        function login(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("loginId").value;
+            const password = document.getElementById("password").value;
+
+            const usernameRegex = /^\S+$/;  // No spaces allowed in the username
+            const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[a-zA-Z]).{8,}$/;  // Password: at least 1 number, 1 special character, and minimum 8 characters
+
+            if (!usernameRegex.test(username)) {
+                alert("Username should not contain spaces.");
+                return;
+            }
+
+            if (!passwordRegex.test(password)) {
+                alert("Password must be at least 8 characters long, contain at least one number and one special character.");
+                return;
+            }
+
+            if (username && password) {
+                localStorage.setItem('username', username);
+                window.location.href = './demo sindhu.html'; // Redirect to dashboard page
+            } else {
+                alert("Please enter both username and password");
+            }
+        }
+
+        // Register function
+        function register(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("registerPassword").value;
+
+            if (username && email && password) {
+                alert("Registration Successful!");
+                showLogin(); // After registration, show login form again
+            } else {
+                alert("Please fill in all fields");
+            }
+        }
+
+        // Reset Password function (Forgot Password)
+        function resetPassword(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("forgotUsername").value;
+            const newPassword = document.getElementById("forgotPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (newPassword !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return;
+            }
+
+            if (username && newPassword) {
+                alert("Password has been successfully reset.");
+                showLogin(); // After reset, show login form again
+            } else {
+                alert("Please fill in all fields correctly.");
+            }
+        }
+
+        // Show login section
+        function showLogin() {
+            document.getElementById("loginSection").style.display = 'block';
+            document.getElementById("registerSection").style.display = 'none';
+            document.getElementById("forgotPasswordSection").style.display = 'none';
+        }
+
+        // Show register section
+        function showRegister() {
+            document.getElementById("loginSection").style.display = 'none';
+            document.getElementById("registerSection").style.display = 'block';
+            document.getElementById("forgotPasswordSection").style.display = 'none';
+        }
+
+        // Show forgot password section
+        function showForgotPassword() {
+            document.getElementById("loginSection").style.display = 'none';
+            document.getElementById("registerSection").style.display = 'none';
+            document.getElementById("forgotPasswordSection").style.display = 'block';
+        }
+
+        // Attach event listeners
+        document.getElementById("loginForm").addEventListener("submit", login);
+        document.getElementById("registerForm").addEventListener("submit", register);
+        document.getElementById("forgotPasswordForm").addEventListener("submit", resetPassword);
+    </script>
+
+    <footer>
+        <p>&copy; 2024 Astrolite Tech solutions Pvt Ltd. All Rights Reserved. Astrolite | <a href="https://www.astrolitetech.com" target="_blank">www.astrolitetech.com</a></p>
+    </footer>
+
+</body>
+</html>
+
